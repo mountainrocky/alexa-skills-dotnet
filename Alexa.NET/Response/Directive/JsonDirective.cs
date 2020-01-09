@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {

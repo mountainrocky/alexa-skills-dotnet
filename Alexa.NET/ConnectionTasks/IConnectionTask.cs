@@ -1,22 +1,21 @@
-﻿using System.Text;
-using Alexa.NET.Response.Converters;
-using Newtonsoft.Json;
+﻿using Alexa.NET.Response.Converters;
+using System.Text.Json.Serialization;
 
 namespace Alexa.NET.ConnectionTasks
 {
-    [JsonConverter(typeof(ConnectionTaskConverter))]
+    //[JsonConverter(typeof(ConnectionTaskConverter))]
     public interface IConnectionTask
     {
         [JsonIgnore]
         string ConnectionUri { get; }
 
-        [JsonProperty("@type")]
+        [JsonPropertyName("@type")]
         string Type { get; }
 
-        [JsonProperty("@version")]
+        [JsonPropertyName("@version")]
         string Version { get; }
 
-        [JsonProperty("context",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("context")]
         ConnectionTaskContext Context { get; set; }
     }
 }

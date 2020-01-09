@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request.Type
 {
     public class SkillEnablementSkillEventRequest: SkillEventRequest
     {
-        [JsonProperty("body",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("body")]
         public SkillEventPersistenceStatus Body { get; set; }
     }
 }

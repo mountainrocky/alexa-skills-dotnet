@@ -1,17 +1,16 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive.Templates
 {
     public class TemplateContent
     {
-        [JsonProperty("primaryText",Required = Required.Always)]
+        [JsonPropertyName("primaryText")]//,Required = Required.Always)]
         public TemplateText Primary { get; set; }
 
-        [JsonProperty("secondaryText",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("secondaryText")]
         public TemplateText Secondary { get; set; }
 
-        [JsonProperty("tertiaryText",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("tertiaryText")]
         public TemplateText Tertiary { get; set; }
     }
 }

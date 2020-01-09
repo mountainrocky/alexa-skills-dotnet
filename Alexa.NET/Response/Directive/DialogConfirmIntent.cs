@@ -1,15 +1,14 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
 using Alexa.NET.Request;
-using Newtonsoft.Json;
 
 namespace Alexa.NET.Response.Directive
 {
     public class DialogConfirmIntent : IDirective
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "Dialog.ConfirmIntent";
 
-        [JsonProperty("updatedIntent", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("updatedIntent")]
         public Intent UpdatedIntent { get; set; }
     }
 }

@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using Alexa.NET.ConnectionTasks;
 using Alexa.NET.ConnectionTasks.Inputs;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+
 
 namespace Alexa.NET.Response.Converters
 {
-    public class ConnectionTaskConverter : JsonConverter
+    public class ConnectionTaskConverter : ValuesJsonConverter<IConnectionTask>
     {
+        public ConnectionTaskConverter() : base(FindType)
+        {
+        }
+
+        public override bool CanConvert(Type typeToConvert) =>
+            typeof(IConnectionTask).IsAssignableFrom(typeToConvert);
+
         public static Dictionary<string, Func<IConnectionTask>> TaskFactoryFromUri = new Dictionary<string, Func<IConnectionTask>>
         {
             {"PrintPDFRequest/1",() => new PrintPdfV1() },
@@ -18,19 +24,10 @@ namespace Alexa.NET.Response.Converters
             {"ScheduleFoodEstablishmentReservationRequest/1",() => new ScheduleFoodEstablishmentReservation()}
         };
 
-        public override bool CanRead => true;
-        public override bool CanWrite => false;
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public static Type FindType(Dictionary<string,string> values)
         {
-            throw new NotImplementedException();
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var jsonObject = JObject.Load(reader);
-            var typeKey = jsonObject.Value<string>("@type");
-            var versionKey = jsonObject.Value<string>("@version");
+            var typeKey = values["@type"];
+            var versionKey = values["@version"];
             var factoryKey = $"{typeKey}/{versionKey}";
             var hasFactory = TaskFactoryFromUri.ContainsKey(factoryKey);
 
@@ -40,16 +37,7 @@ namespace Alexa.NET.Response.Converters
                     $"unrecognized task type '{typeKey}' with version '{versionKey}'"
                 );
 
-            var directive = TaskFactoryFromUri[factoryKey]();
-
-            serializer.Populate(jsonObject.CreateReader(), directive);
-
-            return directive;
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(IConnectionTask);
+            return TaskFactoryFromUri[factoryKey].GetType();
         }
     }
 }

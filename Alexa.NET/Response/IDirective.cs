@@ -1,12 +1,11 @@
-﻿using Alexa.NET.Response.Converters;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response
 {
-    [JsonConverter(typeof(DirectiveConverter))]
+    //[JsonConverter(typeof(DirectiveConverter))]
     public interface IDirective
     {
-        [JsonRequired]
+        //[JsonRequired]
         string Type { get; }
     }
 }

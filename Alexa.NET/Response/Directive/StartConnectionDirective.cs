@@ -1,21 +1,20 @@
-﻿using System;
-using Alexa.NET.ConnectionTasks;
-using Newtonsoft.Json;
+﻿using Alexa.NET.ConnectionTasks;
+using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
     public class StartConnectionDirective:IDirective
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "Connections.StartConnection";
 
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
 
-        [JsonProperty("input")]
+        [JsonPropertyName("input")]
         public IConnectionTask Input { get; set; }
 
-        [JsonProperty("token",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
         public StartConnectionDirective(){}

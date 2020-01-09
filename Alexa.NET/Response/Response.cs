@@ -1,28 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System.Collections.Generic;
 
 namespace Alexa.NET.Response
 {
     public class ResponseBody
     {
-        [JsonProperty("outputSpeech", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("outputSpeech")]
         public IOutputSpeech OutputSpeech { get; set; }
 
-        [JsonProperty("card", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("card")]
         public ICard Card { get; set; }
 
-        [JsonProperty("reprompt", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("reprompt")]
         public Reprompt Reprompt { get; set; }
 
-        [JsonProperty("shouldEndSession", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("shouldEndSession")]
         public bool? ShouldEndSession { get; set; } = false;
 
-        [JsonProperty("directives", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("directives")]
         public IList<IDirective> Directives { get; set; } = new List<IDirective>();
 
-        public bool ShouldSerializeDirectives()
-        {
-            return Directives.Count > 0;
-        }
+        //Not implemented in JSON.Net
+        //public bool ShouldSerializeDirectives()
+        //{
+        //    return Directives.Count > 0;
+        //}
     }
 }

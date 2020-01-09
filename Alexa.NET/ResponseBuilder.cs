@@ -1,8 +1,8 @@
-﻿using Alexa.NET.Request;
-using Alexa.NET.Response;
-using Alexa.NET.Response.Directive;
+﻿using Alexa.NET.Response;
 using System.Collections.Generic;
 using System.Linq;
+using Alexa.NET.Request;
+using Alexa.NET.Response.Directive;
 
 namespace Alexa.NET
 {

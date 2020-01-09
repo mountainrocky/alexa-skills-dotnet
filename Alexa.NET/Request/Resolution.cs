@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request
 {
     public class Resolution
     {
-        [JsonProperty("resolutionsPerAuthority")]
+        [JsonPropertyName("resolutionsPerAuthority")]
         public ResolutionAuthority[] Authorities { get; set; }
     }
 }

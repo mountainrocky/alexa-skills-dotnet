@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response
 {
@@ -12,7 +9,7 @@ namespace Alexa.NET.Response
             RequestId = requestId;
         }
 
-        [JsonProperty("requestId")]
+        [JsonPropertyName("requestId")]
         public string RequestId { get; }
     }
 }

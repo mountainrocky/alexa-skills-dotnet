@@ -1,5 +1,4 @@
-﻿using System;
-namespace Alexa.NET.Response
+﻿namespace Alexa.NET.Response
 {
     public static class RequestedPermission
     {

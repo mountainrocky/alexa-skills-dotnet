@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive.Templates.Types
 {
@@ -7,19 +7,19 @@ namespace Alexa.NET.Response.Directive.Templates.Types
         public string Type => "BodyTemplate6";
         public string Token { get; set; }
 
-        [JsonProperty("backButton", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("backButton")]
         public string BackButton { get; set; }
 
-        [JsonProperty("backgroundImage", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("backgroundImage")]
         public TemplateImage BackgroundImage { get; set; }
 
-        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonProperty("image", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("image")]
         public TemplateImage Image { get; set; }
 
-        [JsonProperty("textContent")]
+        [JsonPropertyName("textContent")]
         public TemplateContent Content { get; set; }
     }
 }

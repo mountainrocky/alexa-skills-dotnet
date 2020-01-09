@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request
 {
     public class ResolutionValueContainer
     {
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public ResolutionValue Value { get; set; }
     }
 }

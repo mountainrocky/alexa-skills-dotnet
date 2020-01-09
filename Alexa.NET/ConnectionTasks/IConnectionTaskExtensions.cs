@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Alexa.NET.Response.Directive;
+﻿using Alexa.NET.Response.Directive;
 
 namespace Alexa.NET.ConnectionTasks
 {

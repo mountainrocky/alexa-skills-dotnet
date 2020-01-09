@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request.Type
 {
     public class LaunchRequest : Request
     {
-        [JsonProperty("task",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("task")]
         public LaunchRequestTask Task { get; set; }
     }
 }

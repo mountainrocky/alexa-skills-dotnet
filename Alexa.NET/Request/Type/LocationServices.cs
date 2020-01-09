@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request.Type
 {
     public class LocationServices
     {
-        [JsonProperty("access")]
+        [JsonPropertyName("access")]
         public LocationServiceAccess Access { get; set; }
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public LocationServiceStatus Status { get; set; }
     }
 }

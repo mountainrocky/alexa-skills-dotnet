@@ -1,15 +1,14 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
 using Alexa.NET.Request;
-using Newtonsoft.Json;
 
 namespace Alexa.NET.Response.Directive
 {
     public class DialogDelegate:IDirective
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "Dialog.Delegate";
 
-        [JsonProperty("updatedIntent",NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("updatedIntent")]
         public Intent UpdatedIntent { get; set; }
     }
 }

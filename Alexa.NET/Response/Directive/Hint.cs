@@ -1,5 +1,5 @@
-﻿using Alexa.NET.Response.Directive.Templates;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using Alexa.NET.Response.Directive.Templates;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -15,10 +15,10 @@ namespace Alexa.NET.Response.Directive
             Type = textType;
         }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
         
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         public string Text { get; set; }
     }
 }

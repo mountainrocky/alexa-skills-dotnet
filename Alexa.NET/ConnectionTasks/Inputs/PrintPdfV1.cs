@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.ConnectionTasks.Inputs
 {
@@ -10,22 +9,22 @@ namespace Alexa.NET.ConnectionTasks.Inputs
         [JsonIgnore]
         public string ConnectionUri => AssociatedUri;
 
-        [JsonProperty("@type")]
+        [JsonPropertyName("@type")]
         public string Type => "PrintPDFRequest";
 
-        [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("context")]
         public ConnectionTaskContext Context { get; set; }
 
-        [JsonProperty("@version")]
+        [JsonPropertyName("@version")]
         public string Version => 1.ToString();
 
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
 
     }

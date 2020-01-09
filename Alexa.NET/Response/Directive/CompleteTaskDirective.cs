@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text.Json.Serialization;
 using Alexa.NET.ConnectionTasks;
-using Newtonsoft.Json;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -15,10 +12,10 @@ namespace Alexa.NET.Response.Directive
             Status = new TaskStatus(statusCode,statusMessage);
         }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "Tasks.CompleteTask";
 
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public TaskStatus Status { get; set; } 
     }
 }

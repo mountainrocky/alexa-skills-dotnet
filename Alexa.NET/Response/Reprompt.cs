@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response
 {
@@ -18,7 +18,7 @@ namespace Alexa.NET.Response
             OutputSpeech = new SsmlOutputSpeech {Ssml = speech.ToXml()};
         }
 
-        [JsonProperty("outputSpeech", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonPropertyName("outputSpeech")]
         public IOutputSpeech OutputSpeech { get; set; }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alexa.NET.Request.Type
+﻿namespace Alexa.NET.Request.Type
 {
     public interface IRequestTypeConverter
     {

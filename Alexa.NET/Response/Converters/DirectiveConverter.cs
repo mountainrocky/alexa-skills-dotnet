@@ -1,17 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using Alexa.NET.Response.Directive;
-using Newtonsoft.Json.Linq;
+
 
 namespace Alexa.NET.Response.Converters
 {
-    public class DirectiveConverter : JsonConverter
+    public class DirectiveConverter : TypeJsonConverter<IDirective>
     {
-        public override bool CanRead => true;
-
-        public override bool CanWrite => false;
-
         public static Dictionary<string, Func<IDirective>> TypeFactories = new Dictionary<string, Func<IDirective>>
         {
             { "AudioPlayer.Play", () => new AudioPlayerPlayDirective() },
@@ -29,37 +26,8 @@ namespace Alexa.NET.Response.Converters
             { "Dialog.UpdateDynamicEntities", () => new DialogUpdateDynamicEntities() }
         };
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public DirectiveConverter() : base(TypeFactories)
         {
-            throw new NotImplementedException();
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var jsonObject = JObject.Load(reader);
-            var typeKey = jsonObject["type"] ?? jsonObject["Type"];
-            var typeValue = typeKey.Value<string>();
-            var hasFactory = TypeFactories.ContainsKey(typeValue);
-
-            IDirective directive;
-
-            if (!hasFactory)
-            {
-                directive = new JsonDirective(typeValue);
-            }
-            else
-            {
-                directive = TypeFactories[typeValue]();
-            }
-
-            serializer.Populate(jsonObject.CreateReader(), directive);
-
-            return directive;
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(IDirective);
         }
     }
 }

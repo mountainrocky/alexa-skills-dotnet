@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -9,10 +9,10 @@ namespace Alexa.NET.Response.Directive
             Source = source;
         }
 
-        [JsonProperty("source", Required = Required.Always)]
+        [JsonPropertyName("source")]//, Required = Required.Always)]
         public string Source { get; set; }
 
-        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("metadata")]
         public VideoItemMetadata Metadata { get; set; }
     }
 }

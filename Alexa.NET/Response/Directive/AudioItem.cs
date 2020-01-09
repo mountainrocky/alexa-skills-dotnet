@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
     public class AudioItem
     {
-        [JsonRequired]
-        [JsonProperty("stream")]
+        //[JsonRequired]
+        [JsonPropertyName("stream")]
         public AudioItemStream Stream { get; set; }
 
-		[JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("metadata")]
 		public AudioItemMetadata Metadata { get; set; }
     }
 }

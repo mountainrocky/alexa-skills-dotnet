@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Request.Type
 {
     public class DisplayElementSelectedRequest:Request
     {
-        [JsonProperty("token")]
+        [JsonPropertyName("token")]
         public string Token { get; set; }
     }
 }

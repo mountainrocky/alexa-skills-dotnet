@@ -1,17 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Alexa.NET.Request
 {
     public class Device
     {
-        [JsonProperty("deviceId")]
+        [JsonPropertyName("deviceId")]
         public string DeviceID { get; set; }
 
-        [JsonProperty("supportedInterfaces")]
+        [JsonPropertyName("supportedInterfaces")]
         public Dictionary<string, object> SupportedInterfaces { get; set; }
 
         public bool IsInterfaceSupported(string interfaceName)

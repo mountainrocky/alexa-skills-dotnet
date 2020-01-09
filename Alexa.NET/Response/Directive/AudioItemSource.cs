@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -14,7 +13,7 @@ namespace Alexa.NET.Response.Directive
 			Url = url;
 		}
 
-		[JsonProperty("url"), JsonRequired]
+		[JsonPropertyName("url")]//, JsonRequired]
 		public string Url { get; set; }
     }
 }

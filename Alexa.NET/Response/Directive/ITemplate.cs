@@ -1,16 +1,15 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
 using Alexa.NET.Response.Converters;
-using Newtonsoft.Json;
 
 namespace Alexa.NET.Response.Directive
 {
-    [JsonConverter(typeof(TemplateConverter))]
+    //[JsonConverter(typeof(TemplateConverter))]
     public interface ITemplate
     {
-        [JsonProperty("type", Required = Required.Always)]
+        [JsonPropertyName("type")]//, Required = Required.Always)]
         string Type { get; }
 
-        [JsonProperty("token", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("token")]
         string Token { get; set; }
     }
 }

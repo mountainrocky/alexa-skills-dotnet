@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -20,10 +17,10 @@ namespace Alexa.NET.Response.Directive
             Speech = speech;
         }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "VoicePlayer.Speak";
 
-        [JsonProperty("speech")]
+        [JsonPropertyName("speech")]
         public string Speech { get; }
     }
 }

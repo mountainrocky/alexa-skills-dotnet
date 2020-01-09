@@ -1,5 +1,4 @@
-﻿using System;
-namespace Alexa.NET.Request.Type
+﻿namespace Alexa.NET.Request.Type
 {
     public static class DialogState
     {

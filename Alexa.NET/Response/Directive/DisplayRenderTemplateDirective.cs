@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Alexa.NET.Response.Converters;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive
 {
     public class DisplayRenderTemplateDirective : IDirective
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type => "Display.RenderTemplate";
 
-        [JsonProperty("template", Required = Required.Always)]
+        [JsonPropertyName("template")]//, Required = Required.Always)]
         public ITemplate Template { get; set; }
     }
 }

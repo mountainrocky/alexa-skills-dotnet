@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Directive.Templates
 {
     public class TemplateImage
     {
-        [JsonProperty("contentDescription", Required = Required.Always)]
+        [JsonPropertyName("contentDescription")]//, Required = Required.Always)]
         public string ContentDescription { get; set; }
 
-        [JsonProperty("sources")]
+        [JsonPropertyName("sources")]
         public List<ImageSource> Sources {get;set;} = new List<ImageSource>();
     }
 }
