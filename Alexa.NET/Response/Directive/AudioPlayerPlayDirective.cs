@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -6,7 +7,7 @@ namespace Alexa.NET.Response.Directive
     {
         [JsonPropertyName("playBehavior")]
         //[JsonRequired]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter))]
         public PlayBehavior PlayBehavior { get; set; }
 
         [JsonPropertyName("audioItem")]

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -8,7 +9,7 @@ namespace Alexa.NET.Response.Directive
         [JsonPropertyName("type")]
         public string Type => "Dialog.UpdateDynamicEntities";
 
-        [JsonPropertyName("updateBehavior"), JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonPropertyName("updateBehavior"), JsonConverter(typeof(EnumMemberStringConverter))]
         public UpdateBehavior UpdateBehavior { get; set; }
 
         [JsonPropertyName("types")]

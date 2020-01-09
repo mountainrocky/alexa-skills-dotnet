@@ -3,6 +3,7 @@ using System.Buffers.Text;
 using System.ComponentModel.Design.Serialization;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.Unicode;
 using System.Threading.Tasks;
 using Alexa.NET.Response;
@@ -14,7 +15,7 @@ namespace Alexa.NET
     {
         static AlexaNetSerializer()
         {
-            Options = new JsonSerializerOptions();
+            Options = new JsonSerializerOptions {IgnoreNullValues = true};
             Options.Converters.Add(new ConnectionTaskConverter());
             Options.Converters.Add(new TemplateConverter());
             Options.Converters.Add(new DirectiveConverter());

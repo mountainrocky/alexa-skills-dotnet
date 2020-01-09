@@ -14,7 +14,6 @@ namespace Alexa.NET.Tests
             var actualJObject = JObject.Parse(rawSystemJson);
             var expected = File.ReadAllText(Path.Combine(ExamplesPath, expectedFile));
             var expectedJObject = JObject.Parse(expected);
-            Console.WriteLine(actualJObject);
             return JToken.DeepEquals(expectedJObject, actualJObject);
         }
 

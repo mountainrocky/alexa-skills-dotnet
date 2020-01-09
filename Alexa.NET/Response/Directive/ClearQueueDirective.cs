@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET.Response.Directive
 {
@@ -9,7 +10,7 @@ namespace Alexa.NET.Response.Directive
 
         [JsonPropertyName("clearBehavior")]
         //[JsonRequired]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter))]
         public ClearBehavior ClearBehavior { get; set; }
     }
 }

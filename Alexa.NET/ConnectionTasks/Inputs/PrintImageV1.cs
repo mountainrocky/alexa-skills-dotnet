@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET.ConnectionTasks.Inputs
 {
@@ -23,7 +24,7 @@ namespace Alexa.NET.ConnectionTasks.Inputs
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("imageType"),JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonPropertyName("imageType"),JsonConverter(typeof(EnumMemberStringConverter))]
         public PrintImageV1Type ImageV1Type { get; set; }
 
         [JsonPropertyName("url")]

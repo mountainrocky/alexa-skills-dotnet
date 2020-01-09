@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Alexa.NET.Response.Converters;
 using Alexa.NET.Response.Directive;
 
 namespace Alexa.NET.Response
@@ -27,7 +28,7 @@ namespace Alexa.NET.Response
         public string Ssml { get; set; }
 
         [JsonPropertyName("playBehavior")]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter))]
         public PlayBehavior? PlayBehavior { get; set; }
     }
 }
