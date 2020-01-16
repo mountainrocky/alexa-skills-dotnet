@@ -91,7 +91,7 @@ namespace Alexa.NET.Tests
                 ""text"": ""sample text""
             }
         }");
-            Assert.True(CompareJson(actual, expected));
+            Assert.True(Utility.CompareJson(actual, expected));
         }
 
         [Fact]

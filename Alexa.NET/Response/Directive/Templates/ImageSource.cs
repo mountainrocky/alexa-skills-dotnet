@@ -11,19 +11,9 @@ namespace Alexa.NET.Response.Directive.Templates
         public string Size { get; set; }
 
         [JsonPropertyName("widthPixels")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonPropertyName("heightPixels")]
-        public int Height { get; set; }
-
-        public bool ShouldSerializeWidth()
-        {
-            return Width > 0;
-        }
-
-        public bool ShouldSerializeHeight()
-        {
-            return Height > 0;
-        }
+        public int? Height { get; set; }
     }
 }

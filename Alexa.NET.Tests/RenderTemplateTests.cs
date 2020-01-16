@@ -42,7 +42,7 @@ namespace Alexa.NET.Tests
                     }
                 }
             };
-            Assert.True(CompareJson(actual, "DisplayRenderTemplateDirective.json"));
+            Assert.True(Utility.CompareJson(actual, "DisplayRenderTemplateDirective.json"));
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace Alexa.NET.Tests
                     Tertiary = new TemplateText { Text = "By me!", Type = TextType.Plain }
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateBodyTemplate1.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateBodyTemplate1.json"));
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace Alexa.NET.Tests
                     Tertiary = new TemplateText { Text = "By me!", Type = TextType.Plain }
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateBodyTemplate2.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateBodyTemplate2.json"));
         }
 
         [Fact]
@@ -127,7 +127,7 @@ namespace Alexa.NET.Tests
                     Tertiary = new TemplateText { Text = "By me!", Type = TextType.Plain }
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateBodyTemplate6.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateBodyTemplate6.json"));
         }
 
         [Fact]
@@ -154,7 +154,7 @@ namespace Alexa.NET.Tests
 
                 Title = "Sample BodyTemplate7"
             };
-            Assert.True(CompareJson(actual, "TemplateBodyTemplate7.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateBodyTemplate7.json"));
         }
 
         [Fact]
@@ -218,7 +218,7 @@ namespace Alexa.NET.Tests
                     },
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateListTemplate1.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateListTemplate1.json"));
         }
 
         [Fact]
@@ -271,7 +271,7 @@ namespace Alexa.NET.Tests
                     }
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateListTemplate2.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateListTemplate2.json"));
         }
 
         [Fact]
@@ -282,7 +282,7 @@ namespace Alexa.NET.Tests
                 ContentDescription = ImageDescription,
                 Sources = new List<ImageSource> { new ImageSource { Url = ImageSource } }
             };
-            Assert.True(CompareJson(actual, "TemplateImageBasic.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateImageBasic.json"));
         }
 
         [Fact]
@@ -299,25 +299,16 @@ namespace Alexa.NET.Tests
                     }
                 }
             };
-            Assert.True(CompareJson(actual, "TemplateImage.json"));
+            Assert.True(Utility.CompareJson(actual, "TemplateImage.json"));
         }
 
         [Fact]
         public void HintCreatesCorrectJson()
         {
             var hint = new HintDirective("test hint");
-            Assert.True(CompareJson(hint, "HintDirective.json"));
+            Assert.True(Utility.CompareJson(hint, "HintDirective.json"));
         }
 
-        private bool CompareJson(object actual, string expectedFile)
-        {
 
-            var actualJObject = JObject.FromObject(actual);
-            var expected = File.ReadAllText(Path.Combine(ExamplesPath, expectedFile));
-            var expectedJObject = JObject.Parse(expected);
-            Console.WriteLine(expected);
-            Console.WriteLine(actualJObject);
-            return JToken.DeepEquals(expectedJObject, actualJObject);
-        }
     }
 }

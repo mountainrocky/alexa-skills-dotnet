@@ -1,12 +1,6 @@
-﻿using System;
-using System.Buffers.Text;
-using System.ComponentModel.Design.Serialization;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.Unicode;
 using System.Threading.Tasks;
-using Alexa.NET.Response;
 using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET

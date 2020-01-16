@@ -4,7 +4,9 @@ namespace Alexa.NET.Response.Directive.Templates.Types
 {
     public class BodyTemplate1:IBodyTemplate
     {
+        [JsonPropertyName("type")]
         public string Type => "BodyTemplate1";
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
         [JsonPropertyName("backButton")]

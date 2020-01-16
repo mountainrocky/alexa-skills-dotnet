@@ -5,7 +5,9 @@ namespace Alexa.NET.Response.Directive.Templates.Types
 {
     public class ListTemplate2:IListTemplate
     {
+        [JsonPropertyName("type")]
         public string Type => "ListTemplate2";
+        [JsonPropertyName("token")]
         public string Token { get; set; }
 
         [JsonPropertyName("backButton")]
@@ -17,6 +19,7 @@ namespace Alexa.NET.Response.Directive.Templates.Types
         [JsonPropertyName("backgroundImage")]
         public TemplateImage BackgroundImage { get; set; }
 
+        [JsonPropertyName("listItems")]
         public List<ListItem> Items { get; set; } = new List<ListItem>();
 
         public bool ShouldSerializeItems()

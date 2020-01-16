@@ -3,7 +3,7 @@ using Alexa.NET.Response.Converters;
 
 namespace Alexa.NET.Response.Directive
 {
-    //[JsonConverter(typeof(TemplateConverter))]
+    [JsonConverter(typeof(TemplateConverter))]
     public interface ITemplate
     {
         [JsonPropertyName("type")]//, Required = Required.Always)]

@@ -132,7 +132,7 @@ namespace Alexa.NET.Tests
                 }
             };
 
-            Assert.True(CompareJson(actual, "Resolution.json"));
+            Assert.True(Utility.CompareJson(actual, "Resolution.json"));
         }
 
         [Fact]

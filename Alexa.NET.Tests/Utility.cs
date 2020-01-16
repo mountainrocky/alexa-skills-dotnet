@@ -17,6 +17,13 @@ namespace Alexa.NET.Tests
             return JToken.DeepEquals(expectedJObject, actualJObject);
         }
 
+        public static bool CompareJson(object actual, JObject expectedJObject)
+        {
+            var rawSystemJson = AlexaNetSerializer.Serialize(actual);
+            var actualJObject = JObject.Parse(rawSystemJson);
+            return JToken.DeepEquals(expectedJObject, actualJObject);
+        }
+
         public static T ExampleFileContent<T>(string expectedFile)
         {
             using (var reader = File.OpenRead(Path.Combine(ExamplesPath, expectedFile)))
