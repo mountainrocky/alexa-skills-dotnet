@@ -6,7 +6,7 @@ namespace Alexa.NET.Request.Type
     public class SessionEndedRequest : Request
     {
         [JsonPropertyName("reason")]
-        [JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter<Reason>))]
         public Reason Reason { get; set; }
 
         [JsonPropertyName("error")]//,NullValueHandling=NullValueHandling.Ignore)]

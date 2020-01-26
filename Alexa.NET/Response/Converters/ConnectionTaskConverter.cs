@@ -37,7 +37,7 @@ namespace Alexa.NET.Response.Converters
                     $"unrecognized task type '{typeKey}' with version '{versionKey}'"
                 );
 
-            return TaskFactoryFromUri[factoryKey].GetType();
+            return TaskFactoryFromUri[factoryKey]().GetType();
         }
     }
 }

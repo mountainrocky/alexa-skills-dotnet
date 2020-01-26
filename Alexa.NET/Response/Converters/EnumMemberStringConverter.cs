@@ -9,19 +9,14 @@ using System.Text.Json.Serialization;
 
 namespace Alexa.NET.Response.Converters
 {
-    public class EnumMemberStringConverter: JsonConverter<object>
+    public class EnumMemberStringConverter<T>: JsonConverter<T>
     {
-        public override bool CanConvert(Type typeToConvert)
-        {
-            return typeToConvert.IsEnum;
-        }
-
-        public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             return ToEnum(reader.GetString(),typeToConvert);
         }
 
-        public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             writer.WriteStringValue(ToEnumString(value));
         }
@@ -34,20 +29,25 @@ namespace Alexa.NET.Response.Converters
             return enumMemberAttribute?.Value ?? type.ToString();
         }
 
-        private static object ToEnum(string str, Type enumType)
+        private static T ToEnum(string str, Type enumType)
         {
+            if (!enumType.IsEnum && enumType.GenericTypeArguments.Any())
+            {
+                enumType = enumType.GenericTypeArguments.First();
+            }
+
             if (string.IsNullOrWhiteSpace(str))
             {
-                return null;
+                return default(T);
             }
 
             foreach (var name in Enum.GetNames(enumType))
 
             {
                 var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetTypeInfo().GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).FirstOrDefault();
-                if (enumMemberAttribute != null && enumMemberAttribute.Value == str) return Enum.Parse(enumType, name);
+                if (enumMemberAttribute != null && enumMemberAttribute.Value == str) return (T)Enum.Parse(enumType, name);
             }
-            return null;
+            return default(T);
         }
     }
 }

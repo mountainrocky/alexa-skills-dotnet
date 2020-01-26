@@ -9,7 +9,7 @@ namespace Alexa.NET.Response.Directive
         [JsonPropertyName("type")]
         public string Type => "Dialog.UpdateDynamicEntities";
 
-        [JsonPropertyName("updateBehavior"), JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonPropertyName("updateBehavior"), JsonConverter(typeof(EnumMemberStringConverter<UpdateBehavior>))]
         public UpdateBehavior UpdateBehavior { get; set; }
 
         [JsonPropertyName("types")]

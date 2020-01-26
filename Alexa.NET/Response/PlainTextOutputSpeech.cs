@@ -28,7 +28,7 @@ namespace Alexa.NET.Response
         public string Text { get; set; }
 
         [JsonPropertyName("playBehavior")]
-        [JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter<PlayBehavior?>))]
         public PlayBehavior? PlayBehavior { get; set; }
     }
 }

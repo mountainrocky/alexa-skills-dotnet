@@ -24,7 +24,7 @@ namespace Alexa.NET.ConnectionTasks.Inputs
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("imageType"),JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonPropertyName("imageType"),JsonConverter(typeof(EnumMemberStringConverter<PrintImageV1Type>))]
         public PrintImageV1Type ImageV1Type { get; set; }
 
         [JsonPropertyName("url")]

@@ -7,7 +7,7 @@ namespace Alexa.NET.Response.Directive
     {
         [JsonPropertyName("playBehavior")]
         //[JsonRequired]
-        [JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter<PlayBehavior>))]
         public PlayBehavior PlayBehavior { get; set; }
 
         [JsonPropertyName("audioItem")]

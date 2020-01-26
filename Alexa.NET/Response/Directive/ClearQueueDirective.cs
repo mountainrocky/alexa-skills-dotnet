@@ -10,7 +10,7 @@ namespace Alexa.NET.Response.Directive
 
         [JsonPropertyName("clearBehavior")]
         //[JsonRequired]
-        [JsonConverter(typeof(EnumMemberStringConverter))]
+        [JsonConverter(typeof(EnumMemberStringConverter<ClearBehavior>))]
         public ClearBehavior ClearBehavior { get; set; }
     }
 }

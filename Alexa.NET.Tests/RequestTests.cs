@@ -17,7 +17,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_IntentRequest_example()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>(IntentRequestFile);
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>(IntentRequestFile);
 
             Assert.NotNull(convertedObj);
             Assert.Equal(typeof(IntentRequest), convertedObj.GetRequestType());
@@ -26,7 +26,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void IntentRequest_Generates_Correct_Name_and_Signature()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("IntentRequest.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("IntentRequest.json");
             var intent = ((IntentRequest)convertedObj.Request).Intent;
             Assert.Equal("GetZodiacHoroscopeIntent", intent.Name);
             Assert.Equal("GetZodiacHoroscopeIntent", intent.Signature);
@@ -38,7 +38,7 @@ namespace Alexa.NET.Tests
         {
             //Multiple asserts as the IntentSignature state is a single output that should be treated as an immutable object - either all right or wrong.
 			//AMAZON.AddAction<object@Book,targetCollection@ReadingList>
-			var convertedObj = GetObjectFromExample<SkillRequest>("BuiltInIntentRequest.json");
+			var convertedObj = Utility.ExampleFileContent<SkillRequest>("BuiltInIntentRequest.json");
 			var signature = ((IntentRequest)convertedObj.Request).Intent.Signature;
 			Assert.Equal("AddAction", signature.Action);
             Assert.Equal("AMAZON", signature.Namespace);
@@ -59,7 +59,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_LaunchRequest_example()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("LaunchRequest.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("LaunchRequest.json");
 
             Assert.NotNull(convertedObj);
             Assert.Equal(typeof(LaunchRequest), convertedObj.GetRequestType());
@@ -68,7 +68,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_LaunchRequestWithEpochTimestamp_example()
         {
-			var convertedObj = GetObjectFromExample<SkillRequest>("LaunchRequestWithEpochTimestamp.json");
+			var convertedObj = Utility.ExampleFileContent<SkillRequest>("LaunchRequestWithEpochTimestamp.json");
 
 			Assert.NotNull(convertedObj);
 			Assert.Equal(typeof(LaunchRequest), convertedObj.GetRequestType()); 
@@ -77,7 +77,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_SessionEndedRequest_example()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("SessionEndedRequest.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("SessionEndedRequest.json");
 
             Assert.NotNull(convertedObj);
             var sessionEndedRequest = Assert.IsType<SessionEndedRequest>(convertedObj.Request);
@@ -88,7 +88,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_slot_example()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("GetUtterance.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("GetUtterance.json");
 
             var request = Assert.IsAssignableFrom<IntentRequest>(convertedObj.Request);
             var slot = request.Intent.Slots["Utterance"];
@@ -98,7 +98,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_scopes_example()
         {
-            var convertedObjContext = GetObjectFromExample<Context>("GetScopes.json");
+            var convertedObjContext = Utility.ExampleFileContent<Context>("GetScopes.json");
 
             Assert.NotNull(convertedObjContext);
             var scope = convertedObjContext.System.User.Permissions.Scopes["alexa::devices:all:geolocation:read"];
@@ -108,7 +108,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_accept_new_versions()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("SessionEndedRequest.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("SessionEndedRequest.json");
 
             Assert.NotNull(convertedObj);
             Assert.Equal(typeof(SessionEndedRequest), convertedObj.GetRequestType());
@@ -138,7 +138,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_read_intent_with_entity_resolution()
         {
-            var intentRequest = GetObjectFromExample<IntentRequest>("IntentWithResolution.json");
+            var intentRequest = Utility.ExampleFileContent<IntentRequest>("IntentWithResolution.json");
             var mediaTypeSlot = intentRequest.Intent.Slots["MediaType"];
             var mediaTitleSlot = intentRequest.Intent.Slots["MediaTitle"];
 
@@ -185,7 +185,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_Read_SkillEventAccountLink()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("SkillEventAccountLink.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("SkillEventAccountLink.json");
             var request = Assert.IsAssignableFrom<AccountLinkSkillEventRequest>(convertedObj.Request);
             Assert.Equal(request.Body.AccessToken,"testToken");
         }
@@ -193,7 +193,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_Read_SkillEventPermissionChange()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("SkillEventPermissionChange.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("SkillEventPermissionChange.json");
             var request = Assert.IsAssignableFrom<PermissionSkillEventRequest>(convertedObj.Request);
             Assert.Equal(request.Body.AcceptedPermissions.First().Scope, "testScope");
             Assert.True(request.EventCreationTime.HasValue);
@@ -203,7 +203,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_Read_NonSpecialisedSkillEvent()
         {
-            var convertedObj = GetObjectFromExample<SkillRequest>("SkillEventEnabled.json");
+            var convertedObj = Utility.ExampleFileContent<SkillRequest>("SkillEventEnabled.json");
             var request = Assert.IsAssignableFrom<SkillEventRequest>(convertedObj.Request);
         }
 
@@ -229,7 +229,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void DialogState_appears_in_IntentRequest()
         {
-            var request = GetObjectFromExample<SkillRequest>(IntentRequestFile);
+            var request = Utility.ExampleFileContent<SkillRequest>(IntentRequestFile);
 
             var actual = (IntentRequest)request.Request;
 
@@ -240,7 +240,7 @@ namespace Alexa.NET.Tests
         [Fact]
         public void ConfirmationState_appears_in_Intent()
 		{
-            var request = GetObjectFromExample<SkillRequest>(IntentRequestFile);
+            var request = Utility.ExampleFileContent<SkillRequest>(IntentRequestFile);
 			var intentRequest = (IntentRequest)request.Request;
             var expected = intentRequest.Intent;
 
@@ -251,7 +251,7 @@ namespace Alexa.NET.Tests
 		[Fact]
         public void ConfirmationState_appears_in_Slot()
 		{
-			var request = GetObjectFromExample<SkillRequest>(IntentRequestFile);
+			var request = Utility.ExampleFileContent<SkillRequest>(IntentRequestFile);
 			var intentRequest = (IntentRequest)request.Request;
 			var expected = intentRequest.Intent.Slots["Date"];
 
@@ -267,7 +267,7 @@ namespace Alexa.NET.Tests
                 RequestConverter.RequestConverters.Add(new NewIntentRequestTypeConverter());
             }
 
-            var request = GetObjectFromExample<SkillRequest>("NewIntent.json");
+            var request = Utility.ExampleFileContent<SkillRequest>("NewIntent.json");
             Assert.IsType<NewIntentRequest>(request.Request);
             Assert.True(((NewIntentRequest) request.Request).TestProperty);
         }
@@ -319,16 +319,10 @@ namespace Alexa.NET.Tests
         [Fact]
         public void Can_Read_Person_Information()
         {
-            var request = GetObjectFromExample<SkillRequest>("BuiltInIntentRequest.json");
+            var request = Utility.ExampleFileContent<SkillRequest>("BuiltInIntentRequest.json");
             Assert.NotNull(request.Context.System.Person);
             Assert.Equal("amzn1.ask.account.personid",request.Context.System.Person.PersonId);
             Assert.Equal("Atza|BBBBBBB", request.Context.System.Person.AccessToken);
-        }
-
-        private T GetObjectFromExample<T>(string filename)
-        {
-            var json = File.ReadAllText(Path.Combine(ExamplesPath, filename));
-            return JsonConvert.DeserializeObject<T>(json);
         }
     }
 }

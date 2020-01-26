@@ -6,7 +6,7 @@ namespace Alexa.NET.Request.Type
     public class SkillEventPersistenceStatus
     {
         [JsonPropertyName("userInformationPersistenceStatus"),
-         JsonConverter(typeof(EnumMemberStringConverter))]
+         JsonConverter(typeof(EnumMemberStringConverter<PersistenceStatus>))]
         public PersistenceStatus Status { get; set; }
     }
 }
