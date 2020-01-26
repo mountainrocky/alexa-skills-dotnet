@@ -5,7 +5,7 @@
     <AssemblyTitle>Alexa.NET</AssemblyTitle>
     <VersionPrefix>1.11.0</VersionPrefix>
     <Authors>Tim Heuer, Steven Pears</Authors>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Alexa.NET</AssemblyName>
     <PackageId>Alexa.NET</PackageId>
     <PackageTags>amazon;alexa;echo;dot;echo dot;skills</PackageTags>

@@ -6,7 +6,7 @@ namespace Alexa.NET.Response.Converters
 {
     public class TypeJsonConverter<T>:DiscriminatorJsonConverter<T>
     {
-        public TypeJsonConverter(Dictionary<string,Func<T>> typeFactories) : base("type", t => typeFactories.ContainsKey(t) ? typeFactories[t].GetType() : null)
+        public TypeJsonConverter(Dictionary<string,Func<T>> typeFactories) : base("type", t => typeFactories.ContainsKey(t) ? typeFactories[t]().GetType() : null)
         {
         }
     }
